@@ -9,7 +9,7 @@ app.controller('temasController', function($scope, $http) {
          });
   };
   $scope.nuevoTema = function (tema) {
-    $http.post("CRUD/insTema.php?task="+task).success(function(data){
+    $http.post("CRUD/insTema.php?tema="+tema).success(function(data){
         obtTemas();
         $scope.tTema = "";
       });
