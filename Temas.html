@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="libs/css/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="css/taskman.css"/>
 
+
+    <script type="text/javascript" src="libs/js/jquery-3.1.0.js"></script>
     <script type="text/javascript" src="libs/js/angular/angular.js"></script>
-    <script type="text/javascript" src="app/Temas.js"></script>
+    <script type="text/javascript" src="libs/js/app/Temas.js"></script>
   </head>
   <body>
-    <div class="widget-box" id="recent-box" ng-controller="temasController">
+    <div class="widget-box" id="recent-box" ng-app="myApp" ng-controller="temasController">
       <div class="widget-header header-color-blue">
         <div class="row">
           <div class="col-sm-6">
@@ -41,7 +42,7 @@
           </div>
         </form>
         <div class="task">
-        	<label class="checkbox" ng-repeat="task in tasks | filter : filtrarTema">
+        	<label class="checkbox" ng-repeat="tema in tasks | filter : filtrarTema">
               <input
             	type="checkbox"
             	value="{{tema.Estado}}"
