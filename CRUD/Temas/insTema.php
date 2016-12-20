@@ -1,15 +1,10 @@
 <?php
-  require_once '../includes/db.php'; // The mysql database connection script
-  if(isset($_GET['task'])){
-    $task = $_GET['task'];
-    $status = "0";
-    $created = time();
+  require_once '../configuracion.php'; // The mysql database connection script
+    $postdata = file_get_contents("php://input");
+    $request = json_decode($postdata);
 
-    $query="INSERT INTO tasks(task,status,created_at)  VALUES ('$task', '$status', '$created')";
-    $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+    $tema = $request->tema;
+    $descripcion=$request->descripcion;
 
-    $result = $mysqli->affected_rows;
-
-    echo $json_response = json_encode($result);
-  }
+    echo $descripcion;
 ?>

@@ -5,20 +5,32 @@ app.controller('temasController', function($scope, $http) {
 
   obtTemas(); // Load all available tasks
   function obtTemas(){
-    $http.post("../../../CRUD/Temas/lstTemas.php")
+    $http.post("http://localhost:88/social/CRUD/Temas/lstTemas.php")
     .success(function(data){
-      $scope.lstTemas = data.d;
-      alert("OK");
+      $scope.lstTemas = data;
      });
   };
 
-  $scope.nuevoTema = function (tema) {
-    $http.post("CRUD/insTema.php?tema="+tema).success(function(data){
-        obtTemas();
-        $scope.tTema = "";
-        alert("Agregado");
-      });
-  };
+  $scope.tTema='1';
+  $scope.tDescripcion='2';
+  $scope.nuevoTema = function () {
+        var httpreq = {
+            method: 'POST',
+            url: 'http://localhost:88/social/CRUD/Temas/insTema.php',
+            headers: {
+                'Content-Type': 'application/json; charset=utf-8',
+                'dataType': 'json'
+            },
+            data: {
+                tema: $scope.tTema,
+                descripcion: $scope.tDescripcion
+              }
+        }
+        $http(httpreq).success(function (response) {
+            obtTemas();
+            alert(response);
+        })
+    };
 
   $scope.eliminarTema = function (tema) {
     if(confirm("Are you sure to delete this line?")){

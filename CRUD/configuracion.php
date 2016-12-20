@@ -4,6 +4,6 @@ $bd_usuario = "root";
 $bd_password = "";
 $bd_base = "social";
 
-$con = mysql_connect($bd_host, $bd_usuario, $bd_password);
-mysql_select_db($bd_base, $con);
+$con =mysqli_connect($bd_host, $bd_usuario, $bd_password,$bd_base) or die("Error " . mysqli_error($con));
+
 ?>
