@@ -1,9 +1,8 @@
 <?php
-  require_once '../db.php'; // The mysql database connection script
-    echo 'test';
+  require('../configuracion.php'); // The mysql database connection script
+
     $query="select id,tema,descripcion,usuario,fecha,estado from cattemas WHERE estado='A';";
-    $result = $mysqli->query($query) or die($mysqli->error.__LINE__);
+    $result = mysql_query($query,$con);
 
     echo $json_response = json_encode($result);
-
 ?>

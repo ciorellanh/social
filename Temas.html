@@ -42,15 +42,24 @@
           </div>
         </form>
         <div class="task">
-        	<label class="checkbox" ng-repeat="tema in tasks | filter : filtrarTema">
-              <input
-            	type="checkbox"
-            	value="{{tema.Estado}}"
-            	ng-checked="tema.Estado==2"
-            	ng-click="toggleStatus(tema.id,tema.Estado, tema.Tema)"/>
-            	<span ng-class="{strike:tema.Estado==2}">{{tema.Tema}} [{{tema.id}}]</span>
-            	<a ng-click="delTema(tema.id)" class="pull-right"><i class="glyphicon glyphicon-trash"></i></a>
-            </label>
+        	<table>
+        	  <tbody>
+        	    <tr ng-repeat="tema in lstTemas">
+        	      <td ng-bind="tema.id">
+        	      </td>
+                <td ng-bind="tema.tema">
+                </td>
+                <td ng-bind="tema.usuario">
+                </td>
+                <td ng-bind="tema.fecha">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" ng-bind="tema.descripcion">
+                </td>
+              </tr>
+        	  </tbody>
+        	</table>
         </div>
       </div>
     </div>

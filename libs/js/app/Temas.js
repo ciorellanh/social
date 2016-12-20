@@ -5,22 +5,21 @@ app.controller('temasController', function($scope, $http) {
 
   obtTemas(); // Load all available tasks
   function obtTemas(){
-    $http.post("../CRUD/lstTemas.php").success(function(data){
-          $scope.tasks = data.d;
-          alert("get" + data.d);
-         });
+    $http.post("../../../CRUD/Temas/lstTemas.php")
+    .success(function(data){
+      $scope.lstTemas = data.d;
+      alert("OK");
+     });
   };
+
   $scope.nuevoTema = function (tema) {
-<<<<<<< HEAD:libs/js/app/Temas.js
-    $http.post("../CRUD/insTema.php?task="+task).success(function(data){
-=======
     $http.post("CRUD/insTema.php?tema="+tema).success(function(data){
->>>>>>> 46563e3c40ccb5353c9be912361d0ef34b353a57:app/Temas.js
         obtTemas();
         $scope.tTema = "";
         alert("Agregado");
       });
   };
+
   $scope.eliminarTema = function (tema) {
     if(confirm("Are you sure to delete this line?")){
     $http.post("CRUD/delTema.php?idTema="+tema).success(function(data){
@@ -35,5 +34,4 @@ app.controller('temasController', function($scope, $http) {
         obtTemas();
       });
   };
-  alert("Hola2");
 });
