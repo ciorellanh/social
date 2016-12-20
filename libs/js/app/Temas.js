@@ -11,7 +11,11 @@ app.controller('temasController', function($scope, $http) {
          });
   };
   $scope.nuevoTema = function (tema) {
+<<<<<<< HEAD:libs/js/app/Temas.js
     $http.post("../CRUD/insTema.php?task="+task).success(function(data){
+=======
+    $http.post("CRUD/insTema.php?tema="+tema).success(function(data){
+>>>>>>> 46563e3c40ccb5353c9be912361d0ef34b353a57:app/Temas.js
         obtTemas();
         $scope.tTema = "";
         alert("Agregado");
