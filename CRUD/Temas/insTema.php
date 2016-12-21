@@ -5,6 +5,11 @@
 
     $tema = $request->tema;
     $descripcion=$request->descripcion;
+    //$created=date("Y-m-d H:i:s");
+    $created=date("Y-m-d");
 
-    echo $descripcion;
+    $query="INSERT INTO cattemas(tema,descripcion,usuario,fecha)  VALUES ('$tema', '$descripcion','cioh', '$created');";
+    $result = mysqli_query($con,$query) or die("Error al agregar " . mysqli_error($con));
+
+    echo json_encode($result);
 ?>

@@ -21,7 +21,7 @@
             </h4>
           </div>
           <div class="col-sm-3">
-            <button ng-click="addNewClicked=!addNewClicked;" class="btn btn-sm btn-danger header-elements-margin"><i class="glyphicon  glyphicon-plus"></i>&nbsp;Agregar nuevo tema</button>
+            <button type="button" ng-click="addNewClicked=!addNewClicked;" class="btn btn-sm btn-danger header-elements-margin"><i class="glyphicon  glyphicon-plus"></i>&nbsp;Agregar nuevo tema</button>
           </div>
           <div class="col-sm-3">
 
@@ -31,17 +31,17 @@
         </div>
       </div>
       <div class="widget-body ">
-        <form ng-init="addNewClicked=false; " ng-if="addNewClicked" id="newTaskForm" class="add-task">
+        <div ng-init="addNewClicked=false;" ng-if="addNewClicked" id="newTaskForm" class="add-task">
           <div class="form-actions">
             <div class="input-group">
-              <input type="text" class="form-control" name="Tema" ng-model="tTema" placeholder="Agregar nuevo tema" ng-focus="addNewClicked">
-              <input type="text" class="form-control" name="Descripcion" ng-model="tDescripcion" placeholder="Descripción del tema" ng-focus="addNewClicked">
+              <input type="text" class="form-control" ng-model="tTema" placeholder="Agregar nuevo tema">
+              <input type="text" class="form-control" ng-model="tDescripcion" placeholder="Descripción del tema">
               <div class="input-group-btn">
-                <button class="btn btn-default" type="button" ng-click="nuevoTema()"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar nuevo tema</button>
+                <button class="btn btn-default" type="button" ng-click="nuevoTema(tTema,tDescripcion)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar nuevo tema</button>
               </div>
             </div>
           </div>
-        </form>
+        </div>
         <br>
         <table width="100%">
           <tr ng-repeat="tema in lstTemas | filter:filtrarTema">
