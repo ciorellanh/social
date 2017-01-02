@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Comentarios</title>
+    <link rel="stylesheet" type="text/css" href="../libs/css/bootstrap/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="../libs/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../libs/js/angular/angular.js"></script>
+    <script type="text/javascript" src="../libs/js/app/Comentarios.js"></script>
+    <script type="text/javascript" src="../libs/js/ui-bootstrap-tpls-2.0.0.js"></script>
+  </head>
+  <body>
+    <div class="widget-box" id="recent-box" ng-app="myApp" ng-controller="comentariosController">
+      <div ng-repeat="t in TemaX" class="">
+          <h3>{{t.tema}}</h3>
+      </div>
+
+      <div class="">
+        <table>
+          <tr ng-repeat="comentario in lstComentarios">
+            <td>
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                    </th>
+                    <th ng-bind="comentario.fecha">
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td ng-bind="comentario.usuario">
+                    </td>
+                    <td ng-bind="comentario.comentario">
+                    </td>
+                  </tr>
+                  <tr>
+                    <div uib-accordion-group class="panel-default" heading="Custom template" template-url="group-template.html">
+                      Hello
+                    </div>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <script type="text/ng-template" id="group-template.html">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title" style="color:#fa39c3">
+              <a href tabindex="0" class="accordion-toggle" ng-click="toggleOpen()" uib-accordion-transclude="heading">
+                <span uib-accordion-header ng-class="{'text-muted': isDisabled}">
+                  {{heading}}
+                </span>
+              </a>
+            </h4>
+          </div>
+          <div class="panel-collapse collapse" uib-collapse="!isOpen">
+            <div class="panel-body" style="text-align: right" ng-transclude></div>
+          </div>
+        </div>
+      </script>
+    </div>
+  </body>
+</html>

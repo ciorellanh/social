@@ -2,10 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Temas</title>
     <link rel="stylesheet" type="text/css" href="../libs/css/bootstrap/css/bootstrap.min.css"/>
-
-
     <script type="text/javascript" src="../libs/js/jquery-3.1.0.js"></script>
     <script type="text/javascript" src="../libs/js/angular/angular.js"></script>
     <script type="text/javascript" src="../libs/js/app/Temas.js"></script>
@@ -37,7 +35,7 @@
               <input type="text" class="form-control" ng-model="tTema" placeholder="Agregar nuevo tema">
               <input type="text" class="form-control" ng-model="tDescripcion" placeholder="Descripción del tema">
               <div class="input-group-btn">
-                <button class="btn btn-default" type="button" ng-click="nuevoTema(tTema,tDescripcion)"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar nuevo tema</button>
+                <button class="btn btn-default" type="button" ng-click="nuevoTema(tTema,tDescripcion); addNewClicked=false;"><i class="glyphicon glyphicon-plus"></i>&nbsp;Agregar nuevo tema</button>
               </div>
             </div>
           </div>
@@ -51,7 +49,7 @@
                   <thead>
                     <tr>
                       <th>
-                        <a href="#">{{tema.tema}}</a>
+                        <a href="Comentarios.html#?tema={{tema.id}}">{{tema.tema}}</a>
                       </th>
                       <th style="width:250px;">
                         Creado por {{tema.usuario}} el {{tema.fecha}}

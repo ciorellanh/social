@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="../libs/css/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../libs/css/chat.css"/>
+    <script type="text/javascript" src="../libs/js/jquery-3.1.0.js"></script>
+    <script type="text/javascript" src="../libs/js/angular/angular.js"></script>
+    <script type="text/javascript" src="../libs/js/app/chat.js"></script>
+  </head>
+  <body>
+    <div ng-app="myApp" ng-controller="chatController">
+      <table width="100%">
+        <thead>
+          <tr>
+            <td style="width:200px;"></td>
+            <td style="width:10px;"></td>
+            <td></td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+
+            </td>
+          </tr>
+          <tr>
+            <td valign="top">
+              <table width="100%">
+                <tr ng-repeat="c in lstContactos" >
+                  <td>
+                    <div >
+                      <button type="button" class="contactos" ng-bind="c.contacto" ng-click="EligeContacto(c.contacto);"></button>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="">
+                <label>{{lContacto}}</label>
+              </div>
+              <div class="bgchat" width="100%">
+                <table width="100%">
+                  <tr>
+                    <td>
+
+                    </td>
+                  </tr>
+
+                    <tr ng-repeat="m in lstMensajes">
+                      <td>
+                        <div ng-class="{'usuario':m.contacto==lContacto,'contacto':m.contacto!=lContacto}">
+                            {{m.mensaje}}
+                        </div>
+                      </td>
+                    </tr>
+
+                </table>
+              </div>
+              <div class="">
+                <table width="100%">
+                  <tr>
+                    <td>
+                      <input type="text" ng-model="tMensaje" class="form-control">
+                    </td>
+                    <td>
+                      <button type="button" ng-click="nuevoMensaje(lContacto,tMensaje);" width="100px">Enviar</button>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

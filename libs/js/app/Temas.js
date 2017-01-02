@@ -3,7 +3,6 @@ var app = angular.module('myApp', []);
 
 app.controller('temasController', function($scope, $http) {
 
-
   function obtTemas(){
     $http.post("http://localhost:88/social/CRUD/Temas/lstTemas.php")
     .success(function(data){
@@ -27,6 +26,7 @@ app.controller('temasController', function($scope, $http) {
         $http(httpreq).success(function (response) {
             obtTemas();
             alert("Agregado");
+            addNewClicked=false;
         })
     };
 
