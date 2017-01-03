@@ -10,64 +10,52 @@
     <script type="text/javascript" src="../libs/js/app/chat.js"></script>
   </head>
   <body>
-    <div ng-app="myApp" ng-controller="chatController">
-      <table width="100%">
-        <thead>
-          <tr>
-            <td style="width:200px;"></td>
-            <td style="width:10px;"></td>
-            <td></td>
-          </tr>
-        </thead>
+    <div class="todo" ng-app="myApp" ng-controller="chatController">
+      <table class="tTodo">
         <tbody>
           <tr>
-            <td>
-
-            </td>
-          </tr>
-          <tr>
-            <td valign="top">
-              <table width="100%">
-                <tr ng-repeat="c in lstContactos" >
-                  <td>
-                    <div >
-                      <button type="button" class="contactos" ng-bind="c.contacto" ng-click="EligeContacto(c.contacto);"></button>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            </td>
-            <td>
-            </td>
-            <td>
-              <div class="">
-                <label>{{lContacto}}</label>
-              </div>
-              <div class="bgchat" width="100%">
-                <table width="100%">
-                  <tr>
+            <td  style="width:200px;" vertical-align="top">
+              <div class="selContacto">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Mis contactos</th>
+                    </tr>
+                  </thead>
+                  <tr ng-repeat="c in lstContactos" >
                     <td>
-
+                      <div >
+                        <button type="button" class="contactos" ng-bind="c.contacto" ng-click="EligeContacto(c.contacto);"></button>
+                      </div>
                     </td>
                   </tr>
-
+                </table>
+              </div>
+            </td>
+            <td style="width:10px;">
+            </td>
+            <td vertical-align="top">
+              <div class="hChat">
+                <label>{{lContacto}}</label>
+              </div>
+              <div class="bgchat">
+                <table width="100%">
                     <tr ng-repeat="m in lstMensajes">
-                      <td>
+                      <td vertical-align="top">
                         <div ng-class="{'usuario':m.contacto==lContacto,'contacto':m.contacto!=lContacto}">
                             {{m.mensaje}}
                         </div>
                       </td>
                     </tr>
-
                 </table>
               </div>
-              <div class="">
+              <div class="fChat">
                 <table width="100%">
                   <tr>
                     <td>
                       <input type="text" ng-model="tMensaje" class="form-control">
                     </td>
-                    <td>
+                    <td style="width:100px;">
                       <button type="button" ng-click="nuevoMensaje(lContacto,tMensaje);" width="100px">Enviar</button>
                     </td>
                   </tr>
