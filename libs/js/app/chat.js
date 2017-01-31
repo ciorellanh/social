@@ -1,6 +1,7 @@
 //Define an angular module for our app
 var app = angular.module('myApp', []);
 
+
 app.controller('chatController', function($scope, $http,$interval) {
   $scope.lContacto='';
 
@@ -36,6 +37,22 @@ app.controller('chatController', function($scope, $http,$interval) {
         })
     };
 
+    $scope.obtUltimoMensaje = function (contacto) {
+          var httpreq = {
+              method: 'POST',
+              url: 'http://localhost:88/social/CRUD/chat/Ultimo.php',
+              headers: {
+                  'Content-Type': 'application/json; charslocet=utf-8',
+                  'dataType': 'json'
+              },
+              data: {
+                  contacto:contacto
+                }
+          }
+          $http(httpreq).success(function (response) {
+              $scope.Ultimo=response;
+          })
+      };
 
     $scope.EligeContacto=function(contacto)
     {

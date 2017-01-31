@@ -1,12 +1,14 @@
 <?php
   require('../configuracion.php'); // The mysql database connection script
+
     $postdata = file_get_contents("php://input");
     $request = json_decode($postdata);
 
-    //$usuario=$request->usuario;
+    //$usuario = $request->$usuario;
     $usuario='cioh';
+    $contacto=$request->contacto;
 
-    $query="SELECT u.contacto,ifnull((SELECT MAX(c.FECHA) FROM TBCHAT c WHERE c.escribio='$usuario' AND c.contacto=u.contacto)>(SELECT MAX(c2.FECHA) FROM TBCHAT c2 WHERE c2.escribio=u.contacto AND c2.contacto='$usuario'),0) AS ultimo FROM tbcontactos u WHERE u.estado='A' AND u.usuario='$usuario';";
+    $query="SELECT TOP 1 escribio FROM tbchat WHERE (escribio='$usuario' OR escribio='$contacto') AND (contacto='$contacto' OR contacto='$usuario') ORDER BY fecha DESC;";
     $result = mysqli_query($con,$query) or die("Error in Selecting " . mysqli_error($con));
 
     $emparray = array();

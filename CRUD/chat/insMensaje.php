@@ -8,9 +8,8 @@
     $usuario='cioh';
     $contacto=$request->contacto;
     $mensaje=$request->mensaje;
-    $created=date("Y-m-d");
 
-    $query="INSERT INTO tbchat(escribio,contacto,mensaje,fecha)  VALUES ('$usuario', '$contacto','$mensaje', $created);";
+    $query="INSERT INTO tbchat(escribio,contacto,mensaje,fecha)  VALUES ('$usuario', '$contacto','$mensaje', now());";
     $result = mysqli_query($con,$query) or die("Error al agregar " . mysqli_error($con));
 
     echo json_encode($result);
